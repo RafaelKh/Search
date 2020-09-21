@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Node.js</title>
+
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://api.github.com">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600&display=fallback">
+  <link rel="stylesheet" href="/static/css/styles.css">
+
+  <meta name="author" content="Node.js">
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Node.jsÂ® is a JavaScript runtime built on Chrome's V8 JavaScript engine.">
+
+  <link rel="apple-touch-icon" href="/static/images/favicons/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" href="/static/images/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/static/images/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="manifest" href="/static/images/favicons/manifest.json">
+  <link rel="mask-icon" href="/static/images/favicons/safari-pinned-tab.svg" color="#43853d">
+  <link rel="shortcut icon" href="/static/images/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#333333">
+  <meta name="msapplication-config" content="/static/images/favicons/browserconfig.xml">
+  <meta name="theme-color" content="#333333">
+
+  <meta property="og:site_name" content="Node.js">
+  <meta property="og:title" content="Node.js">
+  <meta property="og:image" content="https://nodejs.org/static/images/logo-hexagon-card.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="224">
+  <meta property="og:image:height" content="256">
+  <meta property="og:description" content="Node.jsÂ® is a JavaScript runtime built on Chrome's V8 JavaScript engine.">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nodejs">
+  <meta name="twitter:title" content="Node.js">
+  <meta name="twitter:image" content="https://nodejs.org/static/images/logo-hexagon-card.png">
+  <meta name="twitter:image:alt" content="The Node.js Hexagon Logo">
+
+  <link rel="canonical" href="https://nodejs.org/en/blog/">
+  <link rel="alternate" href="/en/feed/blog.xml" title="Node.js Blog" type="application/rss+xml">
+  <link rel="alternate" href="/en/feed/releases.xml" title="Node.js Blog: Releases" type="application/rss+xml">
+  <link rel="alternate" href="/en/feed/vulnerability.xml" title="Node.js Blog: Vulnerability Reports" type="application/rss+xml">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+  
+      <a href="/en/" id="logo">
+        <img src="/static/images/logo.svg" alt="Node.js" width="122" height="75">
+      </a>
+  
+      <nav aria-label="primary">
+        <ul class="list-divider-pipe">
+          <li >
+            <a href="/en/">Home</a>
+          </li>
+  
+            <li >
+                <a href="/en/about/">About</a>
+            </li>
+            <li >
+                <a href="/en/download/">Downloads</a>
+            </li>
+            <li >
+                <a href="/en/docs/">Docs</a>
+            </li>
+            <li >
+                <a href="/en/get-involved/">Get Involved</a>
+            </li>
+            <li >
+                <a href="/en/security/">Security</a>
+            </li>
+            <li >
+                <a href="https://openjsf.org/certification">Certification</a>
+            </li>
+            <li class="active">
+                <a href="/en/blog/">News</a>
+            </li>
+        </ul>
+      </nav>
+  
+      <button class="lang-picker-toggler" type="button" aria-controls="lang-picker" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="25" height="25" aria-hidden="true" focusable="false" fill="currentColor">
+          <path d="M217.982 201.586h-64.499c-5.537 0-10.026 4.489-10.026 10.026s4.489 10.026 10.026 10.026h53.547c-4.72 25.263-26.935 44.446-53.547 44.446-30.037 0-54.473-24.436-54.473-54.473s24.436-54.473 54.473-54.473c14.55 0 28.229 5.667 38.518 15.955 3.916 3.916 10.264 3.916 14.178 0 3.916-3.916 3.916-10.264 0-14.178-14.077-14.077-32.791-21.829-52.697-21.829-41.094 0-74.525 33.431-74.525 74.525 0 41.094 33.431 74.525 74.525 74.525s74.525-33.431 74.525-74.525c.001-5.536-4.488-10.025-10.025-10.025z"/>
+          <path d="M470.331 92.24H269.728l-26.935-81.355a10.025 10.025 0 00-9.518-6.875H41.669C18.693 4.01 0 22.703 0 45.679v332.412c0 22.976 18.693 41.669 41.669 41.669h203.145l27.073 81.369a10.026 10.026 0 009.513 6.861h188.932c22.976 0 41.669-18.693 41.669-41.669V133.909c-.001-22.976-18.694-41.669-41.67-41.669zM41.669 399.708c-11.919 0-21.616-9.697-21.616-21.616V45.679c0-11.919 9.697-21.616 21.616-21.616h184.364l70.691 213.516a.366.366 0 00.015.043l53.664 162.086H41.669zm295.78-116.433c.805 1.11 10.824 14.877 26.355 34.066-4.377 5.756-9.015 11.474-13.91 17.036l-29.712-89.74h87.441c-6.196 13.031-16.938 33.813-31.692 55.736-13.553-16.921-22.069-28.622-22.249-28.87-3.251-4.482-9.519-5.481-14.002-2.23-4.482 3.25-5.48 9.518-2.231 14.002zM265.946 419.76h75.162l-55.503 59.084-19.659-59.084zm226.002 46.561c0 11.919-9.697 21.616-21.616 21.616H304.575l67.015-71.339-.004-.003c.293-.312.571-.64.823-.991a10.025 10.025 0 001.39-9.022l-16.688-50.402c7.073-7.406 13.68-15.143 19.805-22.965 13.299 15.772 29.037 33.446 45.778 50.187 1.957 1.957 4.524 2.937 7.089 2.937s5.132-.979 7.089-2.937c3.916-3.916 3.916-10.264 0-14.178-17.461-17.461-34.013-36.244-47.687-52.632 21.251-30.503 35.033-59.504 40.535-71.954h21.454c5.537 0 10.026-4.489 10.026-10.026s-4.489-10.026-10.026-10.026h-66.173v-18.047c0-5.537-4.489-10.026-10.026-10.026s-10.026 4.489-10.026 10.026v18.046h-51.406l-37.178-112.292H470.33c11.919 0 21.616 9.697 21.616 21.616v332.412z"/>
+        </svg>
+        <span class="sr-only">Toggle Language</span>
+      </button>
+  
+      <ul id="lang-picker" class="lang-picker hidden">
+          <li>
+            <button data-lang="ar" title="Arabic">Ø§ÙØ¹Ø±Ø¨ÙØ©</button>
+          </li>
+          <li>
+            <button data-lang="ca" title="Catalan">Catalan</button>
+          </li>
+          <li>
+            <button data-lang="de" title="German">Deutsch</button>
+          </li>
+          <li>
+            <button data-lang="en" title="English">English</button>
+          </li>
+          <li>
+            <button data-lang="es" title="Spanish">EspaÃ±ol</button>
+          </li>
+          <li>
+            <button data-lang="fa" title="Persian">Ø²Ø¨Ø§Ù ÙØ§Ø±Ø³Û</button>
+          </li>
+          <li>
+            <button data-lang="fr" title="French">FranÃ§ais</button>
+          </li>
+          <li>
+            <button data-lang="gl" title="Galician">Galego</button>
+          </li>
+          <li>
+            <button data-lang="it" title="Italian">Italiano</button>
+          </li>
+          <li>
+            <button data-lang="ja" title="Japanese">æ¥æ¬èª</button>
+          </li>
+          <li>
+            <button data-lang="ko" title="Korean">íêµ­ì´</button>
+          </li>
+          <li>
+            <button data-lang="pt-br" title="Portuguese, Brazilian">PortuguÃªs do Brasil</button>
+          </li>
+          <li>
+            <button data-lang="ro" title="Romanian">limba romÃ¢nÄ</button>
+          </li>
+          <li>
+            <button data-lang="ru" title="Russian">Ð ÑÑÑÐºÐ¸Ð¹</button>
+          </li>
+          <li>
+            <button data-lang="tr" title="Turkish">TÃ¼rkÃ§e</button>
+          </li>
+          <li>
+            <button data-lang="uk" title="Ukrainian">Ð£ÐºÑÐ°ÑÐ½ÑÑÐºÐ°</button>
+          </li>
+          <li>
+            <button data-lang="zh-cn" title="Chinese Simplified">ä¸­æ(ç®ä½)</button>
+          </li>
+          <li>
+            <button data-lang="zh-tw" title="Traditional Chinese">ä¸­æ (ç¹é«)</button>
+          </li>
+      </ul>
+  
+    </div>
+  </header>
+
+  <div id="main">
+    <div class="container">
+      <h2>News from 2020</h2>
+
+      <ul class="blog-index">
+          <li>
+            <time datetime="2020-09-15T21:50:00+0000">15 Sep</time>
+            <a href="/en/blog/vulnerability/september-2020-security-releases/">September 2020 Security Releases</a>
+
+              <div class="summary">
+                <p>Updates are now available for v10,x, v12.x and v14.x Node.js release lines for the following issues.</p><p>Affected Node.js versions converted carriage returns in HTTP request headers to a hyphen before parsing. This can lead to HTTP Request Smuggling as it is a non-standard interpretation of the header.</p><p><a href="/en/blog/vulnerability/september-2020-security-releases/">Read more...</a></p>
+              </div>
+          </li>
+          <li>
+            <time datetime="2020-09-15T21:06:31+0000">15 Sep</time>
+            <a href="/en/blog/release/v12.18.4/">Node v12.18.4 (LTS)</a>
+
+              <div class="summary">
+                <p>This is a security release.</p><p>Vulnerabilities fixed:</p><ul>
+<li><strong>CVE-2020-8201</strong>: HTTP Request Smuggling due to CR-to-Hyphen conversion (High).</li>
+<li><strong>CVE-2020-8252</strong>: fs.realpath.native on may cause buffer overflow (Medium).</li>
+</ul><ul>
+<li>[<a href="https://github.com/nodejs/node/commit/2ea6d255f8"><code>2ea6d255f8</code></a>] - <strong>deps</strong>: libuv: cherry-pick 0e6e8620 (cjihrig) <a href="https://github.com/nodejs-private/node-private/pull/221">nodejs-private/node-private#221</a></li>
+<li>[<a href="https://github.com/nodejs/node/commit/65415049af"><code>65415049af</code></a>] - <strong>deps</strong>: update llhttp to 2.1.2 (Fedor Indutny) <a href="https://github.com/nodejs-private/node-private/pull/219">nodejs-private/node-private#219</a></li>
+<li>[<a href="https://github.com/nodejs/node/commit/edad52e243"><code>edad52e243</code></a>] - <strong>test</strong>: modify tests to support the latest llhttp (Fedor Indutny) <a href="https://github.com/nodejs-private/node-private/pull/219">nodejs-private/node-private#219</a></li>
+</ul><p><a href="/en/blog/release/v12.18.4/">Read more...</a></p>
+              </div>
+          </li>
+          <li>
+            <time datetime="2020-09-15T21:05:57+0000">15 Sep</time>
+            <a href="/en/blog/release/v14.11.0/">Node v14.11.0 (Current)</a>
+
+              <div class="summary">
+                <p>This is a security release.</p><p>Vulnerabilities fixed:</p><ul>
+<li><strong>CVE-2020-8251</strong>: Denial of Service by resource exhaustion CWE-400 due to unfinished HTTP/1.1 requests (Critical).</li>
+<li><strong>CVE-2020-8201</strong>: HTTP Request Smuggling due to CR-to-Hyphen conversion (High).</li>
+</ul><p><a href="/en/blog/release/v14.11.0/">Read more...</a></p>
+              </div>
+          </li>
+          <li>
+            <time datetime="2020-09-15T21:05:00+0000">15 Sep</time>
+            <a href="/en/blog/release/v10.22.1/">Node v10.22.1 (LTS)</a>
+
+              <div class="summary">
+                <p>This is a security release.</p><p>Vulnerabilities fixed:</p><ul>
+<li><strong>CVE-2020-8252</strong>: fs.realpath.native on may cause buffer overflow (Medium).</li>
+</ul><ul>
+<li>[<a href="https://github.com/nodejs/node/commit/57badcf93e"><code>57badcf93e</code></a>] - <strong>deps</strong>: libuv: cherry-pick 0e6e8620 (Colin Ihrig) <a href="https://github.com/libuv/libuv/pull/2966">libuv/libuv#2966</a></li>
+</ul><p><a href="/en/blog/release/v10.22.1/">Read more...</a></p>
+              </div>
+          </li>
+          <li>
+            <time datetime="2020-09-10T15:16:22+0000">10 Sep</time>
+            <a href="/en/blog/release/v14.10.1/">Node v14.10.1 (Current)</a>
+
+              <div class="summary">
+                <p>Node.js 14.10.0 included a streams regression with async generators
+and a docs rendering regression that are being fixed in this release.</p><ul>
+<li>[<a href="https://github.com/nodejs/node/commit/3c92f93b44"><code>3c92f93b44</code></a>] - <strong>doc</strong>: restore color for visited links (Rich Trott) <a href="https://github.com/nodejs/node/pull/35108">#35108</a></li>
+<li>[<a href="https://github.com/nodejs/node/commit/0f94c6b4e4"><code>0f94c6b4e4</code></a>] - <strong><em>Revert</em></strong> &quot;<strong>stream</strong>: simpler and faster Readable async iterator&quot; (Richard Lau)</li>
+</ul><p><a href="/en/blog/release/v14.10.1/">Read more...</a></p>
+              </div>
+          </li>
+          <li>
+            <time datetime="2020-09-08T15:54:55+0000">08 Sep</time>
+            <a href="/en/blog/release/v14.10.0/">Node v14.10.0 (Current)</a>
+
+              <div class="summary">
+                <ul>
+<li>[<a href="https://github.com/nodejs/node/commit/2ab33c58ae"><code>2ab33c58ae</code></a>] - <strong>(SEMVER-MINOR)</strong> <strong>buffer</strong>: also alias BigUInt methods (Anna Henningsen) <a href="https://github.com/nodejs/node/pull/34960">#34960</a></li>
+<li>[<a href="https://github.com/nodejs/node/commit/44d89a9faa"><code>44d89a9faa</code></a>] - <strong>(SEMVER-MINOR)</strong> <strong>crypto</strong>: add randomInt function (Oli Lalonde) <a href="https://github.com/nodejs/node/pull/34600">#34600</a></li>
+<li>[<a href="https://github.com/nodejs/node/commit/8aac42caf2"><code>8aac42caf2</code></a>] - <strong>(SEMVER-MINOR)</strong> <strong>perf_hooks</strong>: add idleTime and event loop util (Trevor Norris) <a href="https://github.com/nodejs/node/pull/34938">#34938</a></li>
+<li>[<a href="https://github.com/nodejs/node/commit/4bb40078da"><code>4bb40078da</code></a>] - <strong>(SEMVER-MINOR)</strong> <strong>stream</strong>: simpler and faster Readable async iterator (Robert Nagy) <a href="https://github.com/nodejs/node/pull/34035">#34035</a></li>
+<li>[<a href="https://github.com/nodejs/node/commit/ffae5f3809"><code>ffae5f3809</code></a>] - <strong>(SEMVER-MINOR)</strong> <strong>stream</strong>: save error in state (Robert Nagy) <a href="https://github.com/nodejs/node/pull/34103">#34103</a></li>
+</ul><p><a href="/en/blog/release/v14.10.0/">Read more...</a></p>
+              </div>
+          </li>
+          <li>
+            <time datetime="2020-08-27T14:50:50+0000">27 Aug</time>
+            <a href="/en/blog/release/v14.9.0/">Node v14.9.0 (Current)</a>
+
+              <div class="summary">
+                <ul>
+<li><strong>build</strong>: set --v8-enable-object-print by default (Mary Marchini) <a href="https://github.com/nodejs/node/pull/34705">#34705</a></li>
+<li><strong>deps</strong>:<ul>
+<li>upgrade to libuv 1.39.0 (cjihrig) <a href="https://github.com/nodejs/node/pull/34915">#34915</a></li>
+<li>upgrade npm to 6.14.8 (Ruy Adorno) <a href="https://github.com/nodejs/node/pull/34834">#34834</a></li>
+<li>V8: cherry-pick e06ace6b5cdb (Anna Henningsen) <a href="https://github.com/nodejs/node/pull/34673">#34673</a></li>
+</ul>
+</li>
+<li><strong>n-api</strong>: handle weak no-finalizer refs correctly (Gabriel Schulhof) <a href="https://github.com/nodejs/node/pull/34839">#34839</a></li>
+<li><strong>tools</strong>: add debug entitlements for macOS 10.15+ (Gabriele Greco) <a href="https://github.com/nodejs/node/pull/34378">#34378</a></li>
+</ul><p><a href="/en/blog/release/v14.9.0/">Read more...</a></p>
+              </div>
+          </li>
+          <li>
+            <time datetime="2020-08-11T16:45:12+0000">11 Aug</time>
+            <a href="/en/blog/release/v14.8.0/">Node v14.8.0 (Current)</a>
+
+              <div class="summary">
+                <ul>
+<li>[<a href="https://github.com/nodejs/node/commit/16aa927216"><code>16aa927216</code></a>] - <strong>(SEMVER-MINOR)</strong> <strong>async_hooks</strong>: add AsyncResource.bind utility (James M Snell) <a href="https://github.com/nodejs/node/pull/34574">#34574</a></li>
+<li>[<a href="https://github.com/nodejs/node/commit/dc49561e8d"><code>dc49561e8d</code></a>] - <strong>deps</strong>: update to uvwasi 0.0.10 (Colin Ihrig) <a href="https://github.com/nodejs/node/pull/34623">#34623</a></li>
+<li>[<a href="https://github.com/nodejs/node/commit/6cd1c41604"><code>6cd1c41604</code></a>] - <strong>doc</strong>: add Ricky Zhou to collaborators (rickyes) <a href="https://github.com/nodejs/node/pull/34676">#34676</a></li>
+<li>[<a href="https://github.com/nodejs/node/commit/f0a41b2530"><code>f0a41b2530</code></a>] - <strong>doc</strong>: add release key for Ruy Adorno (Ruy Adorno) <a href="https://github.com/nodejs/node/pull/34628">#34628</a></li>
+<li>[<a href="https://github.com/nodejs/node/commit/10dd7a0eda"><code>10dd7a0eda</code></a>] - <strong>doc</strong>: add DerekNonGeneric to collaborators (Derek Lewis) <a href="https://github.com/nodejs/node/pull/34602">#34602</a></li>
+<li>[<a href="https://github.com/nodejs/node/commit/62bb2e757f"><code>62bb2e757f</code></a>] - <strong>(SEMVER-MINOR)</strong> <strong>module</strong>: unflag Top-Level Await (Myles Borins) <a href="https://github.com/nodejs/node/pull/34558">#34558</a></li>
+<li>[<a href="https://github.com/nodejs/node/commit/8cc9e5eb52"><code>8cc9e5eb52</code></a>] - <strong>(SEMVER-MINOR)</strong> <strong>n-api</strong>: support type-tagging objects (Gabriel Schulhof) <a href="https://github.com/nodejs/node/pull/28237">#28237</a></li>
+<li>[<a href="https://github.com/nodejs/node/commit/e89ec46ba9"><code>e89ec46ba9</code></a>] - <strong>(SEMVER-MINOR)</strong> <strong>n-api,src</strong>: provide asynchronous cleanup hooks (Anna Henningsen) <a href="https://github.com/nodejs/node/pull/34572">#34572</a></li>
+</ul><p><a href="/en/blog/release/v14.8.0/">Read more...</a></p>
+              </div>
+          </li>
+          <li>
+            <time datetime="2020-07-29T18:46:03+0000">29 Jul</time>
+            <a href="/en/blog/release/v14.7.0/">Node v14.7.0 (Current)</a>
+
+              <div class="summary">
+                <ul>
+<li><strong>deps</strong>:<ul>
+<li>upgrade npm to 6.14.7 (claudiahdz) <a href="https://github.com/nodejs/node/pull/34468">#34468</a></li>
+</ul>
+</li>
+<li><strong>dgram</strong>:<ul>
+<li><strong>(SEMVER-MINOR)</strong> add IPv6 scope id suffix to received udp6 dgrams (Pekka Nikander) <a href="https://github.com/nodejs/node/pull/14500">#14500</a></li>
+</ul>
+</li>
+<li><strong>src</strong>:<ul>
+<li><strong>(SEMVER-MINOR)</strong> allow preventing SetPromiseRejectCallback (Shelley Vohr) <a href="https://github.com/nodejs/node/pull/34387">#34387</a></li>
+<li><strong>(SEMVER-MINOR)</strong> allow setting a dir for all diagnostic output (AshCripps) <a href="https://github.com/nodejs/node/pull/33584">#33584</a></li>
+</ul>
+</li>
+<li><strong>worker</strong>:<ul>
+<li><strong>(SEMVER-MINOR)</strong> make MessagePort inherit from EventTarget (Anna Henningsen) <a href="https://github.com/nodejs/node/pull/34057">#34057</a></li>
+</ul>
+</li>
+<li><strong>zlib</strong>:<ul>
+<li>switch to lazy init for zlib streams (Andrey Pechkurov) <a href="https://github.com/nodejs/node/pull/34048">#34048</a></li>
+</ul>
+</li>
+<li><strong>New Collaborators</strong>:<ul>
+<li>add rexagod to collaborators (Pranshu Srivastava) <a href="https://github.com/nodejs/node/pull/34457">#34457</a></li>
+<li>add AshCripps to collaborators (AshCripps) <a href="https://github.com/nodejs/node/pull/34494">#34494</a></li>
+<li>add HarshithaKP to collaborators (Harshitha K P) <a href="https://github.com/nodejs/node/pull/34417">#34417</a></li>
+<li>add release key for Richard Lau (Richard Lau) <a href="https://github.com/nodejs/node/pull/34397">#34397</a></li>
+</ul>
+</li>
+</ul><p><a href="/en/blog/release/v14.7.0/">Read more...</a></p>
+              </div>
+          </li>
+          <li>
+            <time datetime="2020-07-22T17:02:33+0000">22 Jul</time>
+            <a href="/en/blog/release/v12.18.3/">Node v12.18.3 (LTS)</a>
+
+              <div class="summary">
+                <ul>
+<li><strong>deps:</strong><ul>
+<li>upgrade npm to 6.14.6 (claudiahdz) <a href="https://github.com/nodejs/node/pull/34246">#34246</a></li>
+<li>update node-inspect to v2.0.0 (Jan Krems) <a href="https://github.com/nodejs/node/pull/33447">#33447</a></li>
+<li>uvwasi: cherry-pick 9e75217 (Colin Ihrig) <a href="https://github.com/nodejs/node/pull/33521">#33521</a></li>
+</ul>
+</li>
+</ul><p><a href="/en/blog/release/v12.18.3/">Read more...</a></p>
+              </div>
+          </li>
+          <li>
+            <time datetime="2020-07-21T21:47:34+0000">21 Jul</time>
+            <a href="/en/blog/release/v14.6.0/">Node v14.6.0 (Current)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-07-21T16:01:23+0000">21 Jul</time>
+            <a href="/en/blog/release/v10.22.0/">Node v10.22.0 (LTS)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-06-30T22:35:10+0000">30 Jun</time>
+            <a href="/en/blog/release/v14.5.0/">Node v14.5.0 (Current)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-06-30T13:40:29+0000">30 Jun</time>
+            <a href="/en/blog/release/v12.18.2/">Node v12.18.2 (LTS)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-06-17T16:28:46+0000">17 Jun</time>
+            <a href="/en/blog/release/v12.18.1/">Node v12.18.1 (LTS)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-06-02T18:50:23+0000">02 Jun</time>
+            <a href="/en/blog/release/v10.21.0/">Node v10.21.0 (LTS)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-06-02T18:41:58+0000">02 Jun</time>
+            <a href="/en/blog/release/v12.18.0/">Node v12.18.0 (LTS)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-06-02T18:41:48+0000">02 Jun</time>
+            <a href="/en/blog/release/v14.4.0/">Node v14.4.0 (Current)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-06-02T12:00:00+0000">02 Jun</time>
+            <a href="/en/blog/vulnerability/june-2020-security-releases/">June 2020 Security Releases</a>
+
+          </li>
+          <li>
+            <time datetime="2020-05-26T14:04:17+0000">26 May</time>
+            <a href="/en/blog/release/v12.17.0/">Node v12.17.0 (LTS)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-05-19T21:30:31+0000">19 May</time>
+            <a href="/en/blog/release/v14.3.0/">Node v14.3.0 (Current)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-05-05T18:30:07+0000">05 May</time>
+            <a href="/en/blog/release/v14.2.0/">Node v14.2.0 (Current)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-04-30T13:54:45+0000">30 Apr</time>
+            <a href="/en/blog/release/v13.14.0/">Node v13.14.0 (Current)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-04-29T18:41:18+0000">29 Apr</time>
+            <a href="/en/blog/release/v14.1.0/">Node v14.1.0 (Current)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-04-28T13:28:22+0000">28 Apr</time>
+            <a href="/en/blog/release/v12.16.3/">Node v12.16.3 (LTS)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-04-22T10:20:16+0000">22 Apr</time>
+            <a href="/en/blog/release/v14.0.0/">Node v14.0.0 (Current)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-04-21T12:00:00+0000">21 Apr</time>
+            <a href="/en/blog/vulnerability/april-2020-openssl-updates/">OpenSSL security releases do not require Node.js security releases</a>
+
+          </li>
+          <li>
+            <time datetime="2020-04-14T18:34:06+0000">14 Apr</time>
+            <a href="/en/blog/release/v13.13.0/">Node v13.13.0 (Current)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-04-12T13:25:02+0000">12 Apr</time>
+            <a href="/en/blog/release/v10.20.1/">Node v10.20.1 (LTS)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-04-08T19:27:15+0000">08 Apr</time>
+            <a href="/en/blog/release/v12.16.2/">Node v12.16.2 (LTS)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-04-08T16:11:48+0000">08 Apr</time>
+            <a href="/en/blog/release/v10.20.0/">Node v10.20.0 (LTS)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-04-03T20:26:28+0000">03 Apr</time>
+            <a href="/en/blog/announcements/adjusted-release-schedule-covid/">Changes to Release Schedule</a>
+
+          </li>
+          <li>
+            <time datetime="2020-03-26T22:51:24+0000">26 Mar</time>
+            <a href="/en/blog/release/v13.12.0/">Node v13.12.0 (Current)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-03-12T03:58:16+0000">12 Mar</time>
+            <a href="/en/blog/release/v13.11.0/">Node v13.11.0 (Current)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-03-05T01:40:51+0000">05 Mar</time>
+            <a href="/en/blog/release/v13.10.1/">Node v13.10.1 (Current)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-03-04T17:55:34+0000">04 Mar</time>
+            <a href="/en/blog/release/v13.10.0/">Node v13.10.0 (Current)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-02-18T20:58:12+0000">18 Feb</time>
+            <a href="/en/blog/release/v13.9.0/">Node v13.9.0 (Current)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-02-18T20:06:29+0000">18 Feb</time>
+            <a href="/en/blog/release/v12.16.1/">Node v12.16.1 (LTS)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-02-11T18:35:04+0000">11 Feb</time>
+            <a href="/en/blog/release/v12.16.0/">Node v12.16.0 (LTS)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-02-06T12:00:00+0000">06 Feb</time>
+            <a href="/en/blog/vulnerability/february-2020-security-releases/">February 2020 Security Releases</a>
+
+          </li>
+          <li>
+            <time datetime="2020-02-06T11:38:12+0000">06 Feb</time>
+            <a href="/en/blog/release/v13.8.0/">Node v13.8.0 (Current)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-02-06T03:13:05+0000">06 Feb</time>
+            <a href="/en/blog/release/v12.15.0/">Node v12.15.0 (LTS)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-02-06T03:11:18+0000">06 Feb</time>
+            <a href="/en/blog/release/v10.19.0/">Node v10.19.0 (LTS)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-01-21T18:43:13+0000">21 Jan</time>
+            <a href="/en/blog/release/v13.7.0/">Node v13.7.0 (Current)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-01-09T21:57:08+0000">09 Jan</time>
+            <a href="/en/blog/release/v10.18.1/">Node v10.18.1 (LTS)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-01-07T23:19:07+0000">07 Jan</time>
+            <a href="/en/blog/release/v13.6.0/">Node v13.6.0 (Current)</a>
+
+          </li>
+          <li>
+            <time datetime="2020-01-07T17:38:00+0000">07 Jan</time>
+            <a href="/en/blog/release/v12.14.1/">Node v12.14.1 (LTS)</a>
+
+          </li>
+      </ul>
+
+      <nav aria-label="pagination" class="pagination">
+
+        
+
+        <a href="/en/blog/year-2019/">Older &gt;</a>
+      </nav>
+    </div>
+  </div>
+
+  <a href="#" id="scroll-to-top">&uarr; <span>Scroll to top</span></a>
+  
+  <footer >
+  
+    <div class="container">
+      <div class="openjsfoundation-footer">
+        <div class="issue-link-container">
+          <a class="openjsfoundation-logo" href="https://openjsf.org/">
+            <img src="/static/images/openjs_foundation-logo.svg" alt="OpenJS Foundation" width="120" height="38">
+          </a>
+          <ul class="list-divider-pipe issue-link">
+            <li><a href="https://github.com/nodejs/node/issues">Report Node.js issue</a></li>
+            <li><a href="https://github.com/nodejs/nodejs.org/issues">Report website issue</a></li>
+            <li><a href="https://github.com/nodejs/help/issues">Get Help</a></li>
+          </ul>
+        </div>
+  
+        <p>Â© OpenJS Foundation. All Rights Reserved. Portions of this site originally Â© Joyent.</p>
+        <p>Node.js is a trademark of Joyent, Inc. and is used with its permission. Please review the <a href="https://trademark-list.openjsf.org">Trademark List</a> and <a href="https://trademark-policy.openjsf.org">Trademark Guidelines</a> of the <a href="https://openjsf.org">OpenJS Foundation</a>.</p>
+        <p>
+          <a href="https://raw.githubusercontent.com/nodejs/node/master/LICENSE">Node.js Project Licensing Information</a>.
+        </p>
+  
+        <div class="contributor-card">
+          <a href="#" rel="nofollow noopener noreferrer">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <img id="contributor-avatar" class="hidden" src="/static/images/logos/js-green.svg" alt="Avatar of a Node.js contributor" width="40" height="40">
+          </a>
+        
+          <p>
+            Thank you <a href="#" id="contributor-username" rel="nofollow noopener noreferrer">username</a> for being a <a href="https://github.com/nodejs/node/graphs/contributors" rel="nofollow noopener noreferrer" title="List of all Node.js contributors">Node.js contributor</a>
+            <a href="https://github.com/nodejs/node/graphs/contributors" rel="nofollow noopener noreferrer">
+              <strong id="contributor-contributions">0 contributions</strong>
+            </a>
+          </p>
+        </div>
+  
+      </div>
+    </div>
+  
+  </footer>
+  
+  <script src="/static/js/main.js" async defer></script>
+</body>
+</html>
